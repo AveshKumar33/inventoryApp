@@ -1,26 +1,21 @@
 const express=require('express');
 const router=express.Router();
-const adminController=require('../controllers/adminControllers');
 const categoryController=require('../controllers/categoryControllers');
-// -----------------BASIC CURD OPERATION OF ADMIN--------------------------
-router.post('/insert/admin',adminController.insertAdmin);
-router.get('/read/admin',adminController.readAdmin);
-
+const itemController=require('../controllers/itemsControllers');
 
 // -----------------BASIC CURD OPERATION OF CATEGORY--------------------------
-router.post('/insert/category',categoryController.insertCategory);
-router.get('/read/category',categoryController.readCategory)
+router.post('/category/create',categoryController.insertCategory);
+router.get('/category/read',categoryController.readCategory);
+router.delete("/category/:Name/delete", categoryController.deleteCategory);
+//router.put("/category/:id/update", categoryController.updateCategory);
 
 
 
 
-
-// -----------------BASIC CURD OPERATION OF CUSTOMER--------------------------
-
-
-
-
-// -----------------BASIC CURD OPERATION OF --------------------------
+// -----------------BASIC CURD OPERATION OF ITEM--------------------------
+router.post('/item/create',itemController.insertItem);
+router.get('/item/read',itemController.readItem);
+//router.get("/category/:id/delete", author_controller.author_delete_get);
 
 
 module.exports = router;
